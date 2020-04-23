@@ -1,0 +1,9 @@
+[HttpGet]
+public ActionResult Save(int id)
+{
+    using (MyDatabaseEntities dc = new MyDatabaseEntities())
+    {
+        var v = dc.Employees.Where(a => a.EmployeeID == id).FirstOrDefault();
+        return View(v);
+    }
+}

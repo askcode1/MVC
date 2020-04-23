@@ -1,0 +1,16 @@
+[HttpGet]
+public ActionResult Delete(int id)
+{
+    using (MyDatabaseEntities dc = new MyDatabaseEntities())
+    {
+        var v = dc.Employees.Where(a => a.EmployeeID == id).FirstOrDefault();
+        if (v != null)
+        {
+            return View(v);
+        }
+        else
+        {
+            return HttpNotFound();
+        }
+    }
+}

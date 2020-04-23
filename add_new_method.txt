@@ -1,0 +1,8 @@
+public ActionResult GetEmployees()
+{
+    using (MyDatabaseEntities dc = new MyDatabaseEntities())
+    {
+        var employees = dc.Employees.OrderBy(a => a.FirstName).ToList();
+        return Json(new { data = employees }, JsonRequestBehavior.AllowGet);
+    }
+}
